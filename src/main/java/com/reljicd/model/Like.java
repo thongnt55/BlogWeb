@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "likee")
+@Table(name = "like")
 public class Like {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

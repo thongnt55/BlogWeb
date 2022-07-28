@@ -2,7 +2,6 @@ package com.reljicd.controller;
 
 import com.reljicd.model.Post;
 import com.reljicd.model.User;
-import com.reljicd.service.LikeService;
 import com.reljicd.service.PostService;
 import com.reljicd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +22,10 @@ public class PostController {
     private final PostService postService;
     private final UserService userService;
 
-    private final LikeService likeservice;
     @Autowired
-    public PostController(PostService postService, UserService userService, LikeService likeservice) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
         this.userService = userService;
-        this.likeservice = likeservice;
     }
 
     @RequestMapping(value = "/newPost", method = RequestMethod.GET)
@@ -88,18 +85,17 @@ public class PostController {
     public String getPostWithId(@PathVariable Long id,
                                 Principal principal,
                                 Model model) {
-// count like cho bai biet nay
+
         Optional<Post> optionalPost = postService.findForId(id);
 
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
 
             model.addAttribute("post", post);
-            model.addAttribute("countLike", likeservice.countLike(Math.toIntExact(post.getId())));
             if (isPrincipalOwnerOfPost(principal, post)) {
                 model.addAttribute("username", principal.getName());
             }
-            System.out.println( likeservice.countLike(Math.toIntExact(post.getId())));
+
             return "/post";
 
         } else {

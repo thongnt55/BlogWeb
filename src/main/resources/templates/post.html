@@ -14,10 +14,7 @@
     <div class="jumbotron">
 
         <h1 th:text="${post.title}">Title</h1>
-        <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">Created by
-        </div>
-        <div th:text="'LIKES : '+${countLike}">
-        </div>
+        <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">Created by</div>
         <div><a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a></div>
         <h3 th:text="${post.body}">Body</h3>
 
@@ -37,7 +34,7 @@
     <!--Comments-->
     <div class="well" th:each="comment : ${post.comments}">
         <h3 th:text="${comment.body}">Body</h3>
-        <div th:text="'Created: ' + ${#dates.format(comment.createDate, 'dd-MMM-yyyy')} + ' by ' + ${countLike}" >
+        <div th:text="'Created: ' + ${#dates.format(comment.createDate, 'dd-MMM-yyyy')} + ' by '">
             Created by
         </div>
         <div><a th:text="${comment.user.username}" th:href="@{'/blog/' + ${comment.user.username}}">User</a>
@@ -48,9 +45,6 @@
     <!--Only if authenticated-->
     <div sec:authorize="isAuthenticated()">
         <div class="row">
-            <a th:href="@{'/Like/{id}'(id=${post.id})}" class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block" th:text="Like">LIKE</button>
-            </a>
             <a th:href="@{'/commentPost/{id}'(id=${post.id})}" class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block" th:text="Comment">Comment</button>
             </a>
