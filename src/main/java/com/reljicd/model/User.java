@@ -51,6 +51,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Post> posts;
 
+    @OneToMany(mappedBy = "user")
+    private Collection<Like> likes;
+
     public Long getId() {
         return id;
     }
