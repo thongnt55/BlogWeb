@@ -81,7 +81,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                 // Fix for H2 console
                 .and().headers().frameOptions().disable();
-        
+
+
     }
 
 
