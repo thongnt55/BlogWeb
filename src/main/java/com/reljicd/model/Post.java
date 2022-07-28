@@ -42,6 +42,14 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Collection<Like> likes;
 
+    public Collection<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Collection<Like> likes) {
+        this.likes = likes;
+    }
+
     public Long getId() {
         return id;
     }
