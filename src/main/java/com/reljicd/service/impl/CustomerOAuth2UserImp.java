@@ -33,5 +33,7 @@ public class CustomerOAuth2UserImp implements OAuth2User {
 		// TODO Auto-generated method stub
 		return oauth2User.getAttribute("name");
 	}
-
+	public String getEmail(){
+		return oauth2User.getAttribute("email");
+	}
 }

@@ -78,6 +78,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 	.userInfoEndpoint()
                 	.userService(oAuth2UserService)
                 .and()
+                .successHandler(oAuth2LoginSuccessHandler)
                 .and()
                 .logout()
                 .permitAll()
@@ -123,4 +124,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Autowired
     private CustomerOAuth2UserService oAuth2UserService;
+    @Autowired
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 }
