@@ -3,9 +3,7 @@ package com.reljicd.util;
 import com.reljicd.model.Post;
 import org.springframework.data.domain.Page;
 
-/**
- * @author hieu nguyen
- */
+
 public class Pager {
 
     private final Page<Post> posts;

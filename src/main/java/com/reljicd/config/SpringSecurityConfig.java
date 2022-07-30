@@ -1,5 +1,6 @@
 package com.reljicd.config;
 
+import com.reljicd.service.CustomerOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,19 +16,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
+
+
 import javax.sql.DataSource;
 
 /**
  * Spring Security Configuration
  * http://docs.spring.io/spring-boot/docs/current/reference/html/howto-security.html
  * Switches off Spring Boot automatic security configuration
- *
- * @author hieu
  */
 @Configuration
-//@EnableGlobalMethodSecurity(prePostEnabled=true,proxyTargetClass=true)
-//@EnableWebSecurity
-//@Lazy 
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AccessDeniedHandler accessDeniedHandler;
@@ -75,11 +73,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/home")
                 .permitAll()
                 .and()
+                .oauth2Login()
+                	.loginPage("/login")
+                	.userInfoEndpoint()
+                	.userService(oAuth2UserService)
+                .and()
+                .and()
                 .logout()
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                // Fix for H2 console
                 .and().headers().frameOptions().disable();
 
 
@@ -118,5 +121,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+    @Autowired
+    private CustomerOAuth2UserService oAuth2UserService;
 }
