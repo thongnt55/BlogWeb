@@ -22,17 +22,24 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
         CustomerOAuth2UserImp customerOAuth2UserImp=(CustomerOAuth2UserImp) authentication.getPrincipal();
-        System.out.println("OAuth2 username"+customerOAuth2UserImp.getName());
-        System.out.println("OAuth2 email"+customerOAuth2UserImp.getEmail());
+
         //customerOAuth2UserImp.getName();
+        String clientName = customerOAuth2UserImp.getClientName();
+
         String email = customerOAuth2UserImp.getEmail();
+
+        System.out.println("client name"+clientName);
+        System.out.println("OAuth2 email"+customerOAuth2UserImp.getEmail());
 
         Optional<User> user = customerService.findByEmail(email);
         System.out.print(user);
-        if(user.get() !=null){
+        String u =user.toString();
+        System.out.print(u);
+        if(u != "Optional.empty"){
             System.out.println("User alredy exist in db");
         }else {
             System.out.println("New user");
+            customerService.save(user);
         }
     }
 }

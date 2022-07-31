@@ -13,7 +13,8 @@ public class CustomerOAuth2UserService extends DefaultOAuth2UserService {
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		// TODO Auto-generated method stub
-		return new CustomerOAuth2UserImp(super.loadUser(userRequest));
+		String clientName = userRequest.getClientRegistration().getClientName();
+		return new CustomerOAuth2UserImp(super.loadUser(userRequest),clientName);
 	}
 	
 }
