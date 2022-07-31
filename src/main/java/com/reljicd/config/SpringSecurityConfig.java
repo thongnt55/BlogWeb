@@ -75,7 +75,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 	.loginPage("/login")
-                	.userInfoEndpoint()
+                    .userInfoEndpoint()
                 	.userService(oAuth2UserService)
                 .and()
                 .successHandler(oAuth2LoginSuccessHandler)
