@@ -31,4 +31,15 @@ public class HomeController {
 
         return "/home";
     }
+    @GetMapping("/index")
+    public String index(@RequestParam(defaultValue = "0") int page,
+                       Model model) {
+
+        Page<Post> posts = postService.findAllOrderedByDatePageable(page);
+        Pager pager = new Pager(posts);
+
+        model.addAttribute("pager", pager);
+
+        return "/index";
+    }
 }

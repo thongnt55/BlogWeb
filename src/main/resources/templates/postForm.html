@@ -42,6 +42,13 @@
                                   class="form-control input-lg"/>
                     </div>
 
+                    <div class="form-group">
+                        <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                               class="alert alert-danger"></label>
+                        <textarea id="txt_des" th:field="*{description}" placeholder="Description"
+                                  class="form-control input-lg"/>
+                    </div>
+
                     <input type="hidden" th:field="*{user}"/>
                     <input type="hidden" th:field="*{id}"/>
 

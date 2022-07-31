@@ -26,6 +26,9 @@ public class Post {
     @Column(name = "body", columnDefinition = "TEXT")
     private String body;
 
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false, updatable = false)
     @CreationTimestamp
@@ -120,5 +123,13 @@ public class Post {
 
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
