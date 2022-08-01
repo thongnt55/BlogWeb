@@ -50,4 +50,21 @@ public class BlogController {
             return "/error";
         }
     }
+//
+//    @RequestMapping(value = "/blog/{category}", method = RequestMethod.GET)
+//    public String blogForCategory(@PathVariable String category,
+//                                  @RequestParam(defaultValue = "0") int page,
+//                                  Model model) {
+//
+//
+//            Page<Post> posts = postService.findForCategory(category, page);
+//            Pager pager = new Pager(posts);
+//
+//            model.addAttribute("pager", pager);
+//            model.addAttribute("category", category);
+//
+//            return "/posts";
+//
+//
+//    }
 }

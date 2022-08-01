@@ -51,6 +51,17 @@ public class PostServiceImp implements PostService {
 
     }
 
+//    @Override
+//    public Optional<Post> findForCategory(String category) {
+//        return Optional.empty();
+//    }
+
+
+//    @Override
+//    public Page<Post> findForCategory(String category, int page) {
+//        return postRepository.findByCategory(category,PageRequest.of(subtractPageByOne(page), 5));
+//    }
+
     private int subtractPageByOne(int page){
         return (page < 1) ? 0 : page - 1;
     }

@@ -10,6 +10,7 @@ public interface PostService {
 
     Optional<Post> findForId(Long id);
 
+
     Post save(Post post);
 
     /**
@@ -25,4 +26,8 @@ public interface PostService {
     void delete(Post post);
 
     void deleteById(int id);
+
+//    Optional<Post> findForCategory(String category);
+//
+//    Page<Post> findForCategory(String category, int page);
 }

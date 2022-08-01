@@ -13,5 +13,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Page<Post> findAllByOrderByCreateDateDesc(Pageable pageable);
 
+    //Page<Post> findByCategory(String category, Pageable pageable);
+
+
     Optional<Post> findById(Long id);
 }
