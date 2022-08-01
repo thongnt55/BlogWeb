@@ -6,5 +6,7 @@ import java.util.Optional;
 
 public interface CustomerService {
     Optional<User> findByEmail(String email);
-    User save(User user);
+
+
+    User createNewAfterOAuthLoginSuccess(String email, String name);
 }

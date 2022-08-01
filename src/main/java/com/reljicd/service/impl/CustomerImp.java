@@ -1,8 +1,8 @@
 package com.reljicd.service.impl;
 
 import com.reljicd.model.User;
+import com.reljicd.repository.CustomerRepository;
 import com.reljicd.repository.RoleRepository;
-import com.reljicd.repository.UserRepository;
 import com.reljicd.service.CustomerService;
 import org.springframework.stereotype.Service;
 
@@ -11,25 +11,31 @@ import java.util.Optional;
 
 @Service
 public class CustomerImp implements CustomerService {
-    private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private final RoleRepository roleRepository;
     private static final String USER_ROLE = "ROLE_USER";
 
-    public CustomerImp(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
+    public CustomerImp(CustomerRepository customerRepository, RoleRepository roleRepository) {
+        this.customerRepository = customerRepository;
         this.roleRepository = roleRepository;
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return customerRepository.findByEmail(email);
     }
 
     @Override
-    public User save(User user) {
+    public User createNewAfterOAuthLoginSuccess(String email, String name) {
+        User user=new User();
         user.setActive(1);
-        // Set Role to ROLE_USER
+        user.setEmail(email);
+        user.setPassword(email);
+        user.setLastName(" ");
+        user.setName(name);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
-        return userRepository.saveAndFlush(user);
+        return customerRepository.saveAndFlush(user);
     }
+
+
 }

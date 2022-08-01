@@ -39,4 +39,5 @@ public class CustomerOAuth2UserImp implements OAuth2User {
 	public String getClientName(){
 		return this.clientName;
 	}
+
 }

@@ -46,4 +46,5 @@ public class UserServiceImp implements UserService {
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
         return userRepository.saveAndFlush(user);
     }
+
 }

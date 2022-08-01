@@ -5,6 +5,7 @@
 
     <div th:replace="/fragments/header :: header-css"/>
 
+
 </head>
 <body>
 
@@ -45,9 +46,24 @@
                     <div class="form-group">
                         <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
                                class="alert alert-danger"></label>
-                        <textarea id="txt_des" th:field="*{description}" placeholder="Description"
+                        <textarea th:field="*{description}" placeholder="Description"
                                   class="form-control input-lg"/>
                     </div>
+
+                    <div class="dropdown custom-dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false"> </span>
+                            Category
+                        </a>
+                        <div class="dropdown-menu" >
+                            <a class="dropdown-item" href="#">Category 1</a>
+                            <a class="dropdown-item" href="#">Category 2</a>
+                            <a class="dropdown-item" href="#">Category 3</a>
+                            <a class="dropdown-item" href="#">Category 4</a>
+                            <a class="dropdown-item" href="#">Category 5</a>
+                        </div>
+                    </div>
+
+
 
                     <input type="hidden" th:field="*{user}"/>
                     <input type="hidden" th:field="*{id}"/>

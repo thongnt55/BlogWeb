@@ -27,6 +27,7 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         String clientName = customerOAuth2UserImp.getClientName();
 
         String email = customerOAuth2UserImp.getEmail();
+        String name = customerOAuth2UserImp.getName();
 
         System.out.println("client name"+clientName);
         System.out.println("OAuth2 email"+customerOAuth2UserImp.getEmail());
@@ -35,11 +36,11 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         System.out.print(user);
         String u =user.toString();
         System.out.print(u);
-        if(u != "Optional.empty"){
-            System.out.println("User alredy exist in db");
-        }else {
+        if(u == "Optional.empty"){
             System.out.println("New user");
-            customerService.save(user);
+            customerService.createNewAfterOAuthLoginSuccess(email,name);
+        }else {
+            System.out.println("update existing user");
         }
     }
 }
