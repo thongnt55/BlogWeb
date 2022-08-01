@@ -28,12 +28,14 @@ public class CustomerImp implements CustomerService {
     @Override
     public User createNewAfterOAuthLoginSuccess(String email, String name) {
         User user=new User();
+
         user.setActive(1);
         user.setEmail(email);
+        user.setUsername(email);
         user.setPassword(email);
-        user.setLastName(" ");
         user.setName(name);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
+
         return customerRepository.saveAndFlush(user);
     }
 
