@@ -1,8 +1,8 @@
 package com.reljicd.service.impl;
 
 import com.reljicd.model.Like;
-import com.reljicd.model.User;
 import com.reljicd.model.Post;
+import com.reljicd.model.User;
 import com.reljicd.repository.LikeRepository;
 import com.reljicd.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;

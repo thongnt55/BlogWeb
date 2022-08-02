@@ -47,56 +47,56 @@ INSERT INTO TAG ( TAG_ID , TAG_NAME ) VALUES (5, '#xx');
 INSERT INTO TAG ( TAG_ID , TAG_NAME ) VALUES (6, '#ssz');
 INSERT INTO TAG ( TAG_ID , TAG_NAME ) VALUES (7, '#uu');
 -- Posts
-INSERT INTO post (post_id, user_id, title, body, create_date)
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (1, 1, 'Bài viết 1',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
         --         CURRENT_TIMESTAMP());
-        {ts '2016-10-19 11:10:13.247'});
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        {ts '2016-10-19 11:10:13.247'}, 'Bài viết 1');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (2, 1, 'Bài viết 2',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
         --         CURRENT_TIMESTAMP());
-        {ts '2016-11-10 11:10:13.247'});
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        {ts '2016-11-10 11:10:13.247'}, 'Bài viết 2');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (3, 1, 'Bài viết 3',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 3');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (4, 1, 'Bài viết 4',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 4');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (5, 1, 'Bài viết 5',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 5');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (6, 1, 'Bài viết 6',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 6');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (7, 2, 'Bài viết 7',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 7');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (8, 2, 'Bài viết 8',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 8');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (9, 2, 'Bài viết 9',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 9');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (10, 2, 'Bài viết 10',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 10');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (11, 3, 'Bài viết 11',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
-INSERT INTO post (post_id, user_id, title, body, create_date)
+        CURRENT_TIMESTAMP(), 'Bài viết 11');
+INSERT INTO post (post_id, user_id, title, body, create_date, description)
 VALUES (12, 3, 'Bài viết 12',
         'Trao đổi với Tuổi Trẻ, luật sư Trương Anh Tú (Đoàn luật sư TP Hà Nội) bày tỏ: "Dàn dựng nội dung thông tin không có thật, mạo nhận các đài truyền hình để lấy niềm tin người bệnh đã làm xấu hình ảnh, hạ uy tín các cơ quan báo chí. Nguy hiểm hơn, đây lại là thủ đoạn gian dối để bán thuốc dỏm trục lợi".',
-        CURRENT_TIMESTAMP());
+        CURRENT_TIMESTAMP(), 'Bài viết 12');
 
 -- Comments
 INSERT INTO comment (post_id, user_id, body, create_date)

@@ -2,11 +2,9 @@ package com.reljicd.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reljicd.model.Comment;
+import com.reljicd.model.Like;
 import com.reljicd.model.Post;
 import com.reljicd.model.User;
-import com.reljicd.model.Like;
-import com.reljicd.service.CommentService;
 import com.reljicd.service.LikeService;
 import com.reljicd.service.PostService;
 import com.reljicd.service.UserService;

@@ -16,8 +16,7 @@
                         <div><a th:text="${'By ' + post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a>
                         </div>
                         <p class="an" th:text="${post.body}">Body</p>
-                        <h5 class="panel-body" th:text="'Description:'">Des</h5>
-                        <h5 class="panel-body" th:text="${post.description}">Des</h5>
+                        <h5 class="panel-body" th:text="'Description: ' + ${post.description}">Des</h5>
                         <a class="btn btn-primary" th:href="@{'/post/' + ${post.id}}" >Read more →</a>
                     </div>
                 </div>

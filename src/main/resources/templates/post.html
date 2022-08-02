@@ -19,6 +19,8 @@
         <div><a th:text="'By ' + ${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a></div>
         <p th:text="'LIKES : '"><p th:text="${countLike}" id="likeNum"></p></p>
 
+
+
         <h3 th:text="${post.body}">Body</h3>
         <h4 th:text="'Descripton:'"></h4>
         <h5 th:text="${post.description}">Des</h5>
@@ -33,18 +35,6 @@
         </div>
     </div>
 
-    <h2>Comments:</h2>
-
-    <!--Comments-->
-    <div class="well" th:each="comment : ${post.comments}">
-        <h3 th:text="${comment.body}">Body</h3>
-        <div th:text="'Created: ' + ${#dates.format(comment.createDate, 'dd-MMM-yyyy')}  + ${countLike}">
-            Created
-        </div>
-        <div><a th:text="' by ' + ${comment.user.username}" th:href="@{'/blog/' + ${comment.user.username}}">By User</a>
-        </div>
-    </div>
-
     <!--Leave a comment button-->
     <!--Only if authenticated-->
     <div sec:authorize="isAuthenticated()">
@@ -55,6 +45,18 @@
             <a th:href="@{'/commentPost/{id}'(id=${post.id})}" class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block" th:text="Comment">Comment</button>
             </a>
+
+
+        </div>
+    </div>
+    <h2>Comments:</h2>
+    <!--Comments-->
+    <div class="well" th:each="comment : ${post.comments}">
+        <h3 th:text="${comment.body}">Body</h3>
+        <div th:text="'Created: ' + ${#dates.format(comment.createDate, 'dd-MMM-yyyy')}  + ${countLike}">
+            Created
+        </div>
+        <div><a th:text="' by ' + ${comment.user.username}" th:href="@{'/blog/' + ${comment.user.username}}">By User</a>
         </div>
     </div>
 </div>
