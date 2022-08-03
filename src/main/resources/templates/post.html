@@ -18,12 +18,10 @@
         </div>
         <div><a th:text="'By ' + ${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a></div>
         <p th:text="'LIKES : '"><p th:text="${countLike}" id="likeNum"></p></p>
-
-
-
-        <h3 th:text="${post.body}">Body</h3>
+        <div th:utext="${post.body}"></div>
         <h4 th:text="'Descripton:'"></h4>
-        <h5 th:text="${post.description}">Des</h5>
+        <div th:utext="${post.description}"></div>
+
         <!--Only show these buttons if the user is the owner of post-->
         <div sec:authorize="isAuthenticated()" th:if="${username}">
             <div class="row">
