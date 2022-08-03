@@ -4,8 +4,8 @@
     <title>Spring Boot Thymeleaf + Spring Security</title>
 
     <div th:replace="/fragments/header :: header-css"/>
-    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
-    <script> th:src="/richtext/jquery.richtext.min.js"</script>
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
+    <script th:src="@{/richtext/jquery.richtext.min.js}"> </script>
 
 </head>
 <body>
@@ -95,6 +95,9 @@
 </div>
 
 <div th:replace="/fragments/footer :: footer"/>
-
+<script type="text/javascript">
+    $("#body").richText();
+    $("#des").richText();
+</script>
 </body>
 </html>
