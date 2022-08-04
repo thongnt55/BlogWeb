@@ -52,19 +52,18 @@
                                   class="form-control input-lg"/>
                     </div>
 
-                    <div class="dropdown custom-dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false"> </span>
-                            Category
-                        </a>
-                        <div class="dropdown-menu" >
-                            <a class="dropdown-item" href="#">Category 1</a>
-                            <a class="dropdown-item" href="#">Category 2</a>
-                            <a class="dropdown-item" href="#">Category 3</a>
-                            <a class="dropdown-item" href="#">Category 4</a>
-                            <a class="dropdown-item" href="#">Category 5</a>
-                        </div>
-                    </div>
 
+                    <select name="category" id="category">
+                        <option value="Category1">Category1 </option>
+                        <option value="Category2">Category2</option>
+                        <option value="Category3">Category3</option>
+                        <option value="Category4">Category4</option>
+                        <option value="Category5">Category5</option>
+                        <option value="Category6">Category6</option>
+                        <option value="Category#">Category1#</option>
+                        <option value="Category++">Category1++</option>
+                        <option value="Category">Category</option>
+                    </select>
 
 
                     <input type="hidden" th:field="*{user}"/>

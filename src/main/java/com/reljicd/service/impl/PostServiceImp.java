@@ -27,6 +27,21 @@ public class PostServiceImp implements PostService {
     }
 
     @Override
+    public Optional<Post> findByTitle(String title) {
+        return postRepository.findByTitleLike(title);
+    }
+
+    @Override
+    public Optional<Post> findByBody(String body) {
+        return postRepository.findByBodyLike(body);
+    }
+
+    @Override
+    public Optional<Post> findByDescription(String description) {
+        return postRepository.findByDescriptionLike(description);
+    }
+
+    @Override
     public Post save(Post post) {
         return postRepository.saveAndFlush(post);
     }

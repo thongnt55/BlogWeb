@@ -10,7 +10,11 @@ public interface PostService {
 
     Optional<Post> findForId(Long id);
 
+    Optional<Post> findByTitle(String title);
 
+    Optional<Post> findByBody(String body);
+
+    Optional<Post> findByDescription(String description);
     Post save(Post post);
 
     /**
