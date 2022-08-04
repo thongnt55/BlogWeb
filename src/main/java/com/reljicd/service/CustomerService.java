@@ -9,4 +9,8 @@ public interface CustomerService {
 
 
     User createNewAfterOAuthLoginSuccess(String email, String name);
+
+    User updateCustomerOAuth2(User user1, String name);
+
+    User findByMail(String email);
 }

@@ -9,7 +9,6 @@ import java.security.Principal;
 public class LoginController {
     @GetMapping("/login")
     public String login(Principal principal) {
-
         if (principal != null) {
         	System.out.println(principal.getName());
         	System.err.println(principal);

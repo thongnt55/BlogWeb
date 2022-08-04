@@ -35,8 +35,19 @@ public class CustomerImp implements CustomerService {
         user.setPassword(email);
         user.setName(name);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
-
+        user.setPassword("$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm");
         return customerRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public User updateCustomerOAuth2(User user1, String name) {
+        user1.setName(name);
+        return customerRepository.saveAndFlush(user1);
+    }
+
+    @Override
+    public User findByMail(String email) {
+        return customerRepository.findByMail(email);
     }
 
 
