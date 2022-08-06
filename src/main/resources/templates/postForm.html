@@ -56,6 +56,12 @@
                             <option th:each="category : ${categories}" th:value ="${category.id}" th:text="${category.category_name}"></option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"
+                               class="alert alert-danger"></label>
+                        <textarea id="t" th:field="*{tag}" placeholder="Tag"
+                                  class="form-control input-lg"/>
+                    </div>
 
                     <input type="hidden" th:field="*{user}"/>
                     <input type="hidden" th:field="*{id}"/>

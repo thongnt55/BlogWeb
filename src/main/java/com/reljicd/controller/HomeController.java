@@ -2,9 +2,9 @@ package com.reljicd.controller;
 
 import com.reljicd.model.Category;
 import com.reljicd.model.Post;
-import com.reljicd.model.Tag;
+//import com.reljicd.model.Tag;
 import com.reljicd.repository.CategoryRepository;
-import com.reljicd.repository.TagRepository;
+//import com.reljicd.repository.TagRepository;
 import com.reljicd.service.PostService;
 import com.reljicd.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ public class HomeController {
 
     private final PostService postService;
     private final CategoryRepository categoryRepository;
-    private final TagRepository tagRepository;
+//    private final TagRepository tagRepository;
 
     @Autowired
-    public HomeController(PostService postService, CategoryRepository categoryRepository, TagRepository tagRepository) {
+    public HomeController(PostService postService, CategoryRepository categoryRepository) {
         this.postService = postService;
         this.categoryRepository = categoryRepository;
-        this.tagRepository = tagRepository;
+//        this.tagRepository = tagRepository;
     }
 
     @GetMapping("/home")
@@ -43,9 +43,7 @@ public class HomeController {
         //System.out.println("categories: "+categories);
         model.addAttribute("categories",categories);
 
-        List<Tag> tags = tagRepository.findAll();
-        //System.out.println("categories: "+categories);
-        model.addAttribute("tags",tags);
+
 
         return "/home";
     }
@@ -64,9 +62,6 @@ public class HomeController {
         //System.out.println("categories: "+categories);
         model.addAttribute("categories",categories);
 
-        List<Tag> tags = tagRepository.findAll();
-        //System.out.println("categories: "+categories);
-        model.addAttribute("tags",tags);
 
         return "/home";
     }

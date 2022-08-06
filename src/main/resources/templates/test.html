@@ -9,27 +9,14 @@
     </style>
 </head>
 <body>
-<p>split() splits a string into an array of substrings, and returns the array:</p>
+<p id='demo'>huynh ,mi tom,bong nem,du</p>
 
-<button onclick="click()">click</button>
-<span style="font-size:18px; font-weight:bold;" class="test">8342</span>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
-    function click() {
-        var text = "How , are you , doing today?";
-        var myArray = text.split(",");
-        console.log(myArray);
-
-        for (i = 0; i < myArray.length; i++) {
-            var html = myArray[i];
-            var sp = "<span style='font-size:18px; font-weight:bold;' class='pwn'>" + html
-            sp += " </span> &nbsp;";
-            console.log(myArray[i]);
-            $(".test").append(sp);
-        }
-    }
+    var elem = document.getElementById('demo');
+    elem.outerHTML = elem.textContent.split(',').map(function(el) {
+        return '<a class="pwn">' + el + '</a>';
+    }).join('');
 </script>
-
 </body>
 </html>

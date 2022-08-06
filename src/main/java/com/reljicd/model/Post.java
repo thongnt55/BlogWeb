@@ -29,6 +29,9 @@ public class Post {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "tag", columnDefinition = "TEXT")
+    private String tag;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false, updatable = false)
     @CreationTimestamp
@@ -39,20 +42,18 @@ public class Post {
     @NotNull
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_name"))
-    private Collection<Tag> tags;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
 
-    public Collection<Tag> getTags() {
-        return tags;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTags(Collection<Tag> tags) {
-        this.tags = tags;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public Category getCategory() {
