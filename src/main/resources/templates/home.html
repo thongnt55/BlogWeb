@@ -9,6 +9,7 @@
     <div th:replace="/fragments/header :: header-css"/>
     <link href=" static/css/styles.css" rel="stylesheet" />
 
+
 </head>
 <body>
 <!-- Responsive navbar-->
@@ -55,43 +56,29 @@
             </div>
             <!-- Categories widget-->
             <div class="card mb-4">
-                <div class="card-header">Categories</div>
+                <div class="card-header">Categories: </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Education</a></li>
-                                <li><a href="#!">Medical</a></li>
-                                <li><a href="#!">Techlonogy</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Economy</a></li>
-                                <li><a href="#!">Social</a></li>
-                                <li><a href="#!">Games</a></li>
-                            </ul>
+                            <ol class="list-unstyled mb-0" th:each="category : ${categories}">
+                                <li><a
+                                       th:text="${category.category_name}"
+                                       href="#!"></a></li>
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- tags-->
             <div class="card mb-4">
-                <div class="card-header">Tags</div>
+                <div class="card-header">Tags: </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">#hoa</a></li>
-                                <li><a href="#!">#thaomoc</a></li>
-                                <li><a href="#!">#pc</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">#love</a></li>
-                                <li><a href="#!">#hanxeng</a></li>
-                                <li><a href="#!">#dangcongsan</a></li>
+                            <ul class="list-unstyled mb-0" th:each="tag : ${tags}">
+                                <li><a
+                                        th:text="${tag.tag_name}"
+                                        href="#!"></a></li>
                             </ul>
                         </div>
                     </div>

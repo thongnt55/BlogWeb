@@ -62,7 +62,7 @@ public class PostServiceImp implements PostService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
 
     }
 

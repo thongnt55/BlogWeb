@@ -29,7 +29,7 @@ public interface PostService {
 
     void delete(Post post);
 
-    void deleteById(int id);
+    void deleteById(long id);
 
 //    Optional<Post> findForCategory(String category);
 //

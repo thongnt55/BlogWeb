@@ -73,7 +73,9 @@ public class PostController {
     public String editPostWithId(@PathVariable Long id,
                                  Principal principal,
                                  Model model) {
-
+        List<Category> categories = categoryRepository.findAll();
+        //System.out.println("categories: "+categories);
+        model.addAttribute("categories",categories);
         Optional<Post> optionalPost = postService.findForId(id);
 
         if (optionalPost.isPresent()) {
@@ -114,7 +116,7 @@ public class PostController {
         }
     }
 
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.POST)
     public String deletePostWithId(@PathVariable Long id,
                                    Principal principal) {
 
