@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
@@ -17,39 +18,28 @@ public class Category {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Long cateid;
+    private Long id;
 
     @Column(name = "category_name", unique = true)
     private String category_name;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+
+    @OneToMany(mappedBy = "category")
     private Collection<Post> posts;
 
-    public Long getCid() {
-        return cateid;
-    }
-
-    public Long getCateid() {
-        return cateid;
-    }
-
-    public void setCateid(Long cateid) {
-        this.cateid = cateid;
-    }
-
-    public void setPosts(Collection<Post> posts) {
-        this.posts = posts;
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
-        this.cateid = cateid;
+        this.id = id;
     }
 
     public String getCategory_name() {
         return category_name;
     }
 
-    public void setCategory_name(String role) {
+    public void setCategory_name(String category_name) {
         this.category_name = category_name;
     }
 
@@ -57,7 +47,9 @@ public class Category {
         return posts;
     }
 
-    public void setUsers(Collection<Post> posts) {
+    public void setPosts(Collection<Post> posts) {
         this.posts = posts;
     }
+
+
 }

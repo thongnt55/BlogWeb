@@ -43,9 +43,9 @@ public class Post {
     @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_name"))
     private Collection<Tag> tags;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "post_category", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Collection<Category> categories;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
+    private Category category;
 
     public Collection<Tag> getTags() {
         return tags;
@@ -55,12 +55,12 @@ public class Post {
         this.tags = tags;
     }
 
-    public Collection<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(Collection<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)

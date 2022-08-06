@@ -14,7 +14,6 @@
 <div th:replace="/fragments/header :: header"/>
 
 
-
 <div class="container">
 
     <div class="container">
@@ -52,19 +51,11 @@
                                   class="form-control input-lg"/>
                     </div>
 
-
-                    <select name="category" id="category">
-                        <option value="Category1">Category1 </option>
-                        <option value="Category2">Category2</option>
-                        <option value="Category3">Category3</option>
-                        <option value="Category4">Category4</option>
-                        <option value="Category5">Category5</option>
-                        <option value="Category6">Category6</option>
-                        <option value="Category#">Category1#</option>
-                        <option value="Category++">Category1++</option>
-                        <option value="Category">Category</option>
-                    </select>
-
+                    <div>
+                        <select th:field="*{category.id}">
+                            <option th:each="category : ${categories}" th:value ="${category.id}" th:text="${category.category_name}"></option>
+                        </select>
+                    </div>
 
                     <input type="hidden" th:field="*{user}"/>
                     <input type="hidden" th:field="*{id}"/>

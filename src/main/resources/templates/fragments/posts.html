@@ -18,6 +18,7 @@
                         <div th:utext="${post.body}"></div>
                         <h5 th:text="'Descripton:'"></h5>
                         <div th:utext="${post.description}"></div>
+                        <h5 th:utext="'Category: ' + ${post.category.getCategory_name()}"></h5>
                         <a class="btn btn-primary" th:href="@{'/post/' + ${post.id}}" >Read more →</a>
                     </div>
                 </div>
