@@ -52,6 +52,11 @@ public class PostServiceImp implements PostService {
     }
 
     @Override
+    public Page<Post> findByNameLike(String name,int page) {
+        return postRepository.findByNameLike(name,PageRequest.of(subtractPageByOne(page), 5));
+    }
+
+    @Override
     public Page<Post> findAllOrderedByDatePageable(int page) {
         return postRepository.findAllByOrderByCreateDateDesc(PageRequest.of(subtractPageByOne(page), 5));
     }

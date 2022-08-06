@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .pwn {
+            border: 2px solid black;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<p>split() splits a string into an array of substrings, and returns the array:</p>
+
+<button onclick="click()">click</button>
+<span style="font-size:18px; font-weight:bold;" class="test">8342</span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+    function click() {
+        var text = "How , are you , doing today?";
+        var myArray = text.split(",");
+        console.log(myArray);
+
+        for (i = 0; i < myArray.length; i++) {
+            var html = myArray[i];
+            var sp = "<span style='font-size:18px; font-weight:bold;' class='pwn'>" + html
+            sp += " </span> &nbsp;";
+            console.log(myArray[i]);
+            $(".test").append(sp);
+        }
+    }
+</script>
+
+</body>
+</html>

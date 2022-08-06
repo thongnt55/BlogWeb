@@ -21,7 +21,7 @@ public interface PostService {
      * Finds a {@link Page) of {@link Post} of provided user ordered by date
      */
     Page<Post> findByUserOrderedByDatePageable(User user, int page);
-
+    Page<Post> findByNameLike(String name, int page);
     /**
      * Finds a {@link Page) of all {@link Post} ordered by date
      */

@@ -49,6 +49,27 @@ public class HomeController {
 
         return "/home";
     }
+
+    @GetMapping("/search")
+    public String home_search(@RequestParam(defaultValue = "0") int page,@RequestParam( name = "name", defaultValue = "0") String name,
+                       Model model) {
+
+        System.out.println(name);
+        Page<Post> posts = postService.findByNameLike(name,page);
+        Pager pager = new Pager(posts);
+
+        model.addAttribute("pager", pager);
+
+        List<Category> categories = categoryRepository.findAll();
+        //System.out.println("categories: "+categories);
+        model.addAttribute("categories",categories);
+
+        List<Tag> tags = tagRepository.findAll();
+        //System.out.println("categories: "+categories);
+        model.addAttribute("tags",tags);
+
+        return "/home";
+    }
 //    @GetMapping("/index")
 //    public String index(@RequestParam(defaultValue = "0") int page,
 //                       Model model) {
