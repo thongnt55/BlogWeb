@@ -64,8 +64,8 @@
                         <div class="col-sm-6">
                             <ol class="list-unstyled mb-0" th:each="category : ${categories}">
                                 <li><a
-                                       th:text="${category.category_name}"
-                                       href="#!"></a></li>
+                                       th:text="${category.categoryName}"
+                                       th:href="@{'/home/' + ${category.categoryName}}"></a></li>
                             </ol>
                         </div>
                     </div>

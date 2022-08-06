@@ -21,7 +21,7 @@ public class Category {
     private Long id;
 
     @Column(name = "category_name", unique = true)
-    private String category_name;
+    private String categoryName;
 
 
     @OneToMany(mappedBy = "category")
@@ -35,12 +35,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Collection<Post> getPosts() {

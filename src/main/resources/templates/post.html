@@ -22,7 +22,7 @@
         <h4 th:text="'Descripton:'"></h4>
         <div th:utext="${post.description}"></div>
         <h4 th:text="'Category:'"></h4>
-        <div th:utext="${post.category.getCategory_name()}"></div>
+        <div th:utext="${post.category.getCategoryName()}"></div>
         <!--Only show these buttons if the user is the owner of post-->
         <div sec:authorize="isAuthenticated()" th:if="${username}">
             <div class="row">

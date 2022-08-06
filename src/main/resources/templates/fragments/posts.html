@@ -39,7 +39,7 @@
                         </div>
                         <h5 th:text="'Descripton:'"></h5>
                         <div class="an" th:utext="${post.description}"></div>
-                        <h5 th:utext="'Category: ' + ${post.category.getCategory_name()}"></h5>
+                        <h5 th:utext="'Category: ' + ${post.category.getCategoryName()}"></h5>
                         <a class="btn btn-primary" th:href="@{'/post/' + ${post.id}}" >Read more →</a>
                     </div>
                 </div>

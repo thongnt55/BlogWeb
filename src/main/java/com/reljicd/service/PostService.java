@@ -1,5 +1,6 @@
 package com.reljicd.service;
 
+import com.reljicd.model.Category;
 import com.reljicd.model.Post;
 import com.reljicd.model.User;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,8 @@ public interface PostService {
      * Finds a {@link Page) of {@link Post} of provided user ordered by date
      */
     Page<Post> findByUserOrderedByDatePageable(User user, int page);
+
+    Page<Post> findByCategoryOrderedByDatePageable(Category category, int page);
     Page<Post> findByNameLike(String name, int page);
     /**
      * Finds a {@link Page) of all {@link Post} ordered by date

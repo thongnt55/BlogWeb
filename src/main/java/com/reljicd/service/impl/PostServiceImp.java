@@ -1,5 +1,6 @@
 package com.reljicd.service.impl;
 
+import com.reljicd.model.Category;
 import com.reljicd.model.Post;
 import com.reljicd.model.User;
 import com.reljicd.repository.PostRepository;
@@ -49,6 +50,11 @@ public class PostServiceImp implements PostService {
     @Override
     public Page<Post> findByUserOrderedByDatePageable(User user, int page) {
         return postRepository.findByUserOrderByCreateDateDesc(user, PageRequest.of(subtractPageByOne(page), 5));
+    }
+
+    @Override
+    public Page<Post> findByCategoryOrderedByDatePageable(Category category, int page) {
+        return postRepository.findByCategoryOrderByCreateDate(category, PageRequest.of(subtractPageByOne(page), 5));
     }
 
     @Override
