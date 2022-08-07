@@ -17,7 +17,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Page<Post> findByUserOrderByCreateDateDesc(User user, Pageable pageable);
     Page<Post> findByCategoryOrderByCreateDate(Category category, Pageable pageable);
 
-    @Query(value = "select * from POST where ( title like %:name% or body like %:name% or description like %:name% )", nativeQuery = true)
+    @Query(value = "select * from POST where ( title like %:name% or body like %:name% or description like %:name%  or tag like %:name%)", nativeQuery = true)
     Page<Post> findByNameLike(@Param("name") String name , Pageable pageable );
     Page<Post> findAllByOrderByCreateDateDesc(Pageable pageable);
 
