@@ -26,17 +26,17 @@
         <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')}">Created by
         </div>
         <div><a th:text="'By ' + ${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a></div>
-        <p th:text="'LIKES : '"><p th:text="${countLike}" id="likeNum"></p></p>
         <div th:utext="${post.body}"></div>
         <h4 th:text="'Descripton:'"></h4>
         <div th:utext="${post.description}"></div>
         <h4 th:text="'Category:'"></h4>
-        <h4 th:text="'Category:'"></h4>
-        <div th:utext="${post.category.getCategoryName()}"></div>
+        <a th:utext="${post.category.getCategoryName()} " th:href="@{'/home/' + ${post.category.categoryName}}"></a>
         <div th:text="'Tags:'"></div>
-        <div id="tags">
-        </div>
-        <p>end</p>
+        <div>&nbsp;</div>
+        <div id="tags"></div>
+        <div>&nbsp;</div>
+        <p th:text="'Like: ' + ${countLike}" id="likeNum"></p>
+
         <!--Only show these buttons if the user is the owner of post-->
         <div sec:authorize="isAuthenticated()" th:if="${username}">
             <div class="row">
@@ -92,6 +92,7 @@
     document.getElementById("tags").innerHTML = prepare_html;
 
     function updateLike() {
+        var like = "Like: ";
         console.log(  [[${post.id}]] );
         $.ajax({
             type: "GET",
@@ -103,7 +104,7 @@
             timeout: 100000,
             success: function (data) {
                 console.log("SUCCESS: ", data);
-                document.getElementById('likeNum').innerHTML  = data;
+                document.getElementById('likeNum').innerHTML  =like + data;
             },
             error: function (e) {
                 console.log("ERROR: ", e);
