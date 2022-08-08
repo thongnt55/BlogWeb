@@ -53,7 +53,7 @@
     <div sec:authorize="isAuthenticated()">
         <div class="row">
             <a class="col-md-2">
-            <button id="LikeButton" type="button" class="btn btn-primary btn-block" th:text="Like" onclick="updateLike()">LIKE</button>
+            <button id="LikeButton" type="button" class="btn btn-primary btn-block"  onclick="updateLike()">LIKE</button>
             </a>
             <a th:href="@{'/commentPost/{id}'(id=${post.id})}" class="col-md-2">
                 <button type="button" class="btn btn-primary btn-block" th:text="Comment">Comment</button>
