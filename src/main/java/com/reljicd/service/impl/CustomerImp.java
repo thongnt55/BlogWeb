@@ -31,8 +31,7 @@ public class CustomerImp implements CustomerService {
 
         user.setActive(1);
         user.setEmail(email);
-        user.setUsername(email);
-        user.setPassword(email);
+        user.setUsername(name);
         user.setName(name);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
         user.setPassword("$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm");

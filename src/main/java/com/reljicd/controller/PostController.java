@@ -8,6 +8,7 @@ import com.reljicd.service.LikeService;
 import com.reljicd.service.PostService;
 import com.reljicd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.model.IModel;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,12 +37,12 @@ public class PostController {
     }
 
     @RequestMapping(value = "/newPost", method = RequestMethod.GET)
-    public String newPost(Principal principal,
+    public String newPost(Authentication authentication,
                           Model model) {
         List<Category> categories = categoryRepository.findAll();
         //System.out.println("categories: "+categories);
         model.addAttribute("categories",categories);
-        Optional<User> user = userService.findByUsername(principal.getName());
+        Optional<User> user = userService.findByUsername(authentication.getName());
 
         if (user.isPresent()) {
             Post post = new Post();
@@ -71,7 +71,7 @@ public class PostController {
 
     @RequestMapping(value = "/editPost/{id}", method = RequestMethod.GET)
     public String editPostWithId(@PathVariable Long id,
-                                 Principal principal,
+                                 Authentication authentication,
                                  Model model) {
         List<Category> categories = categoryRepository.findAll();
         //System.out.println("categories: "+categories);
@@ -81,7 +81,7 @@ public class PostController {
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
 
-            if (isPrincipalOwnerOfPost(principal, post)) {
+            if (isAuthenticationOwnerOfPost(authentication, post)) {
                 model.addAttribute("post", post);
                 return "/postForm";
             } else {
@@ -95,7 +95,7 @@ public class PostController {
 
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getPostWithId(@PathVariable Long id,
-                                Principal principal,
+                                Authentication authentication,
                                 Model model) {
 // count like cho bai biet nay
         Optional<Post> optionalPost = postService.findForId(id);
@@ -105,8 +105,8 @@ public class PostController {
 
             model.addAttribute("post", post);
             model.addAttribute("countLike", likeservice.countLike(Math.toIntExact(post.getId())));
-            if (isPrincipalOwnerOfPost(principal, post)) {
-                model.addAttribute("username", principal.getName());
+            if (isAuthenticationOwnerOfPost(authentication, post)) {
+                model.addAttribute("username", authentication.getName());
             }
             System.out.println( likeservice.countLike(Math.toIntExact(post.getId())));
             return "/post";
@@ -118,14 +118,14 @@ public class PostController {
 
     @RequestMapping(value = "/post/{id}", method = RequestMethod.POST)
     public String deletePostWithId(@PathVariable Long id,
-                                   Principal principal) {
+                                   Authentication authentication) {
 
         Optional<Post> optionalPost = postService.findForId(id);
 
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
 
-            if (isPrincipalOwnerOfPost(principal, post)) {
+            if (isAuthenticationOwnerOfPost(authentication, post)) {
                 postService.delete(post);
                 return "redirect:/home";
             } else {
@@ -137,7 +137,7 @@ public class PostController {
         }
     }
 
-    private boolean isPrincipalOwnerOfPost(Principal principal, Post post) {
-        return principal != null && principal.getName().equals(post.getUser().getUsername());
+    private boolean isAuthenticationOwnerOfPost(Authentication authentication, Post post) {
+        return authentication != null && authentication.getName().equals(post.getUser().getUsername());
     }
 }

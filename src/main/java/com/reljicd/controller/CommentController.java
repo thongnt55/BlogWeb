@@ -7,6 +7,7 @@ import com.reljicd.service.CommentService;
 import com.reljicd.service.PostService;
 import com.reljicd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -46,14 +46,13 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/commentPost/{id}", method = RequestMethod.GET)
-    public String commentPostWithId(@PathVariable Long id,
-                                    Principal principal,
+    public String commentPostWithId(@PathVariable Long id, Authentication authentication,
                                     Model model) {
 
         Optional<Post> post = postService.findForId(id);
 
         if (post.isPresent()) {
-            Optional<User> user = userService.findByUsername(principal.getName());
+            Optional<User> user = userService.findByUsername(authentication.getName());
 
             if (user.isPresent()) {
                 Comment comment = new Comment();

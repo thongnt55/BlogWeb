@@ -33,6 +33,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public Optional<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }

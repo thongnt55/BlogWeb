@@ -9,6 +9,7 @@ import com.reljicd.service.LikeService;
 import com.reljicd.service.PostService;
 import com.reljicd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -33,12 +33,13 @@ public class LikeController {
     }
 
     @RequestMapping(value = "/Like/{id}", method = RequestMethod.GET)
-    public @ResponseBody String Likenew(@PathVariable Long id, Principal principal, Model model) {
+    public @ResponseBody String Likenew(@PathVariable Long id, Authentication authentication, Model model) {
         ObjectMapper mapper = new ObjectMapper();
         String ajaxResponse = "";
-        System.out.println(id);
+        System.out.println(id + authentication.getName());
         Optional<Post> post = postService.findForId(id);
-        Optional<User> user = userService.findByUsername(principal.getName());
+        Optional<User> user = userService.findByUsername(authentication.getName());
+        System.out.println(user);
         try {
             if (user.isPresent()) {
                 Like like = new Like();
@@ -49,6 +50,7 @@ public class LikeController {
                     likeService.deleteLike(post.get().getId(), user.get().getId());
                 }
                 else likeService.save(like);
+                System.out.println(like);
                 int countLike = likeService.countLike(Math.toIntExact(post.get().getId()));
                 ajaxResponse = mapper.writeValueAsString(countLike);
             }
@@ -57,7 +59,7 @@ public class LikeController {
         }
         return ajaxResponse;
 //        if (post.isPresent()) {
-//            Optional<User> user = userService.findByUsername(principal.getName());
+//            Optional<User> user = userService.findByUsername(authentication.getName());
 //            if (user.isPresent()) {
 //                Like like = new Like();
 //                like.setUser(user.get());

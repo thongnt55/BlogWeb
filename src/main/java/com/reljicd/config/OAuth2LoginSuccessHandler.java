@@ -7,23 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.AttributedString;
 import java.util.Optional;
 
 @Component
 public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Autowired
     private CustomerService customerService;
+    private Model model;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
 
-        CustomerOAuth2UserImp customerOAuth2UserImp=(CustomerOAuth2UserImp) authentication.getPrincipal();
+        CustomerOAuth2UserImp customerOAuth2UserImp=(CustomerOAuth2UserImp)authentication.getPrincipal();
 
         System.out.println(authentication.getName());
 
@@ -34,11 +37,9 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         System.out.println("client name"+clientName);
         System.out.println("OAuth2 email"+customerOAuth2UserImp.getEmail());
 
-        User user=customerService.findByMail(email);
+        User user = customerService.findByMail(email);
         System.out.print(user);
-        String u =user.toString();
-        System.out.print(u);
-        if(u == "Optional.empty"){
+        if(user == null){
             System.out.println("New user");
             customerService.createNewAfterOAuthLoginSuccess(email,name);
 
