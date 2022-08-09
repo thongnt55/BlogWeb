@@ -74,6 +74,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 	.userService(oAuth2UserService)
                 .and()
                 .successHandler(oAuth2LoginSuccessHandler)
+//                .successHandler(login).defaultSuccessUrl("/home")
                 .and()
                 .logout()
                 .permitAll()
@@ -121,4 +122,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomerOAuth2UserService oAuth2UserService;
     @Autowired
     private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+    private OAuth2LoginSuccessHandler login;
+
 }
