@@ -65,6 +65,20 @@ public class HomeController {
 
         return "/home";
     }
+
+
+    @GetMapping("/searchtag")
+    public String tag_search(@RequestParam(defaultValue = "0") int page,@RequestParam( name = "name", defaultValue = "0") String name,
+                              Model model) {
+
+        System.out.println(name);
+        Page<Post> posts = postService.findByTagLike(name,page);
+        Pager pager = new Pager(posts);
+
+        model.addAttribute("pager", pager);
+
+        return "/home";
+    }
 //    @GetMapping("/index")
 //    public String index(@RequestParam(defaultValue = "0") int page,
 //                       Model model) {

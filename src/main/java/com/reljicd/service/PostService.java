@@ -34,6 +34,8 @@ public interface PostService {
 
     void deleteById(long id);
 
+    Page<Post> findByTagLike(String name, int page);
+
 //    Optional<Post> findForCategory(String category);
 //
 //    Page<Post> findForCategory(String category, int page);

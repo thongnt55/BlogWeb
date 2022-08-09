@@ -78,14 +78,14 @@
 <script type="text/javascript">
     var tags = "[[${post.tag}]]";
     var elems =  tags.split(',');
+    var tag = "#";
     console.log(elems.length);
     var prepare_html = "";
     if( tags != "") {
         for (var i = 0; i < elems.length; i++) {
-            prepare_html += ("<a class='rcorners2' href='/search?name=" + elems[i] + "'>" + elems[i] + "</a>" + " ");
+            prepare_html += ("<a class='rcorners2' href='/searchtag?name=" + elems[i] + "'>" + elems[i] + "</a>" + " ");
         }
     }
-
     console.log(prepare_html);
     document.getElementById("tags").innerHTML = prepare_html;
 

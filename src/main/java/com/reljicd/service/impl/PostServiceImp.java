@@ -77,6 +77,11 @@ public class PostServiceImp implements PostService {
 
     }
 
+    @Override
+    public Page<Post> findByTagLike(String name, int page) {
+        return postRepository.findByTagLike(name,PageRequest.of(subtractPageByOne(page), 5));
+    }
+
 //    @Override
 //    public Optional<Post> findForCategory(String category) {
 //        return Optional.empty();

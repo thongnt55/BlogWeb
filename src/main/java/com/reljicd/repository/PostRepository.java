@@ -16,6 +16,8 @@ import java.util.Optional;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Page<Post> findByUserOrderByCreateDateDesc(User user, Pageable pageable);
     Page<Post> findByCategoryOrderByCreateDate(Category category, Pageable pageable);
+    @Query(value = "SELECT * FROM blog.post WHERE tag LIKE %:name%", nativeQuery = true)
+    Page<Post> findByTagLike(@Param("name") String name , Pageable pageable );
 
     @Query(value = "select * from POST where ( title like %:name% or body like %:name% or description like %:name%  or tag like %:name%)", nativeQuery = true)
     Page<Post> findByNameLike(@Param("name") String name , Pageable pageable );
@@ -28,5 +30,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<Post> findByBodyLike(String body);
     Optional<Post> findByDescriptionLike(String description);
     Optional<Post> findByTitleLike(String title);
+
 
 }
