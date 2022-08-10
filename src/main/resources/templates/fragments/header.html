@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
+
 <div th:fragment="header-css">
 
 	<title>Spring Boot Blog</title>
@@ -11,7 +12,6 @@
 	<link
 		href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
 		rel="stylesheet" media="screen" />
-
 	<script
 		src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 	<link rel="stylesheet" th:href="@{/css/main.css}"
@@ -22,39 +22,30 @@
 	<script src="/path/to/cdn/jquery.min.js"></script>
 	<script src="/path/to/jquery.richtext.min.js"></script>
 </head>
+
 <body>
 	<div th:fragment="header">
 		<!-- this is header -->
-		<nav class="navbar navbar-inverse ">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/home}">Blog Web</a>
+		<div style="position: fixed;left: 0;width: 100%;top:0;border-bottom:1px solid #f5f5f5">
+			<nav class="navbar navbar-inverse ">
+				<div class="container">
+					<div class="navbar-header">
+						<a id="nav" class="navbar-brand" th:href="@{/home}">Blog Web</a>
+					</div>
+					<div id="navbar" class="collapse navbar-collapse navbar-right" >
+						<ul id="nav1" class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+							<li class="active"><a th:href="@{/registration}">Registration</a></li>
+							<li class="active"><a th:href="@{/login}">Login</a></li>
+						</ul>
+						<ul id="nav2" class="nav navbar-nav" sec:authorize="hasRole('USER')">
+							<li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
+							<li class="active"><a th:href="@{/newPost}">New Post</a></li>
+							<li class="active"><a th:href="@{/logout}">Sign Out</a></li>
+						</ul>
+					</div>
 				</div>
-				<div id="navbar" class="collapse navbar-collapse navbar-right">
-					<!-- show registration only if user is not yet authenticated -->
-					<ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
-						<li class="active"><a th:href="@{/registration}">Registration</a></li>
-					</ul>
-					<!-- show login only if user is not yet authenticated -->
-					<ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
-						<li class="active"><a th:href="@{/login}">Login</a></li>
-					</ul>
-					<!-- show My Blog only if user is authenticated -->
-					<ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
-						<li class="active"><a
-							th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
-					</ul>
-					<!-- show new post only if user is authenticated -->
-					<ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
-						<li class="active"><a th:href="@{/newPost}">New Post</a></li>
-					</ul>
-					<!-- show sign out only if user is authenticated -->
-					<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-						<li class="active"><a th:href="@{/logout}">Sign Out</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+			</nav>
+		</div>
 	</div>
 
 </body>

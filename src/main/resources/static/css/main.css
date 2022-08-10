@@ -140,3 +140,13 @@ a:hover, a:focus, a:active {
 .custom-dropdown .dropdown-menu a:hover, .custom-dropdown .dropdown-menu a:active, .custom-dropdown .dropdown-menu a:focus {
     background: #fff;
     color: #007bff; }
+
+a#nav{
+    display: block;
+}
+ul#nav1{
+    display: block;
+}
+ul#nav2{
+    display: block;
+}
