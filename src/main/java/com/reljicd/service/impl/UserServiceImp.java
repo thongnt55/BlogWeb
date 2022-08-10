@@ -52,12 +52,4 @@ public class UserServiceImp implements UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    @Override
-    public User update(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setName(user.getName());
-        user.setLastName(user.getLastName());
-        user.setEmail(user.getEmail());
-        return userRepository.saveAndFlush(user);    }
-
 }
