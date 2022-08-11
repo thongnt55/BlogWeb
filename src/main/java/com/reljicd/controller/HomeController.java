@@ -42,9 +42,6 @@ public class HomeController {
         List<Category> categories = categoryRepository.findAll();
         //System.out.println("categories: "+categories);
         model.addAttribute("categories",categories);
-
-
-
         return "/home";
     }
 
