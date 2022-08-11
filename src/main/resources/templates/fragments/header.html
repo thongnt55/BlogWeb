@@ -32,21 +32,37 @@
 					<div class="navbar-header">
 						<a id="nav" class="navbar-brand" th:href="@{/home}">Blog Web</a>
 					</div>
-					<div id="navbar" class="collapse navbar-collapse navbar-right" >
-						<ul id="nav1" class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+
+					<div id="navbar" class="collapse navbar-collapse navbar-right">
+						<!-- show registration only if user is not yet authenticated -->
+						<ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
 							<li class="active"><a th:href="@{/registration}">Registration</a></li>
+						</ul>
+						<!-- show login only if user is not yet authenticated -->
+						<ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
 							<li class="active"><a th:href="@{/login}">Login</a></li>
 						</ul>
-						<ul id="nav2" class="nav navbar-nav" sec:authorize="hasRole('USER')">
-							<li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
+						<!-- show My Blog only if user is authenticated -->
+						<ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
+							<li class="active"><a
+								th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
+						</ul>
+						<!-- show new post only if user is authenticated -->
+						<ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
 							<li class="active"><a th:href="@{/newPost}">New Post</a></li>
+						</ul>
+						<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+							<li class="active"><a th:href="@{/edit}">Edit profile</a></li>
+						</ul>
+						<!-- show sign out only if user is authenticated -->
+						<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 							<li class="active"><a th:href="@{/logout}">Sign Out</a></li>
 						</ul>
+
 					</div>
 				</div>
 			</nav>
 		</div>
 	</div>
-
 </body>
 </html>

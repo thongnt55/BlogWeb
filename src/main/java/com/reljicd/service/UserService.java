@@ -13,4 +13,5 @@ public interface UserService {
     Optional<User> findByEmail(String email);
 
     User save(User user);
+    int updateUser(Long id, String name , String lastname ,String email);
 }

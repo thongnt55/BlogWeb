@@ -8,8 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class RegistrationController {
@@ -54,5 +57,24 @@ public class RegistrationController {
         }
 
         return "/registration";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editProfile(Model model, Principal principal) {
+        Optional<User> user = userService.findByUsername(principal.getName());
+        model.addAttribute("user", user.get());
+        return "/editprofile";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String Save_edit(Principal principal
+                            , @RequestParam("name") String name , @RequestParam("lastname") String lastname , @RequestParam("email") String email) {
+
+
+        Long id =  userService.findByUsername(principal.getName()).get().getId();
+        System.out.println(name+lastname+email);
+        userService.updateUser(id,name,lastname,email);
+
+        return "/home";
     }
 }

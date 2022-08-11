@@ -52,4 +52,8 @@ public class UserServiceImp implements UserService {
         return userRepository.saveAndFlush(user);
     }
 
+    public int updateUser(Long id ,String name , String lastname , String email){
+        return userRepository.updateUser(name,lastname,email,id);
+    }
+
 }
