@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.thymeleaf.model.IModel;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -51,10 +50,10 @@ public class PostController {
             model.addAttribute("post", post);
 
 
-            return "/postForm";
+            return "/post/postForm";
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 
@@ -62,7 +61,7 @@ public class PostController {
     public String createNewPost(@Valid Post post, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/postForm";
+            return "/post/postForm";
         } else {
             postService.save(post);
             return "redirect:/blog/" + post.getUser().getUsername();
@@ -83,13 +82,13 @@ public class PostController {
 
             if (isAuthenticationOwnerOfPost(authentication, post)) {
                 model.addAttribute("post", post);
-                return "/postForm";
+                return "/post/postForm";
             } else {
-                return "/403";
+                return "/error/403";
             }
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 
@@ -109,10 +108,10 @@ public class PostController {
                 model.addAttribute("username", authentication.getName());
             }
             System.out.println( likeservice.countLike(Math.toIntExact(post.getId())));
-            return "/post";
+            return "/post/post";
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 
@@ -129,11 +128,11 @@ public class PostController {
                 postService.delete(post);
                 return "redirect:/home";
             } else {
-                return "/403";
+                return "/error/403";
             }
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 

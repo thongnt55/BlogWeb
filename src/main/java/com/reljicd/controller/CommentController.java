@@ -37,7 +37,7 @@ public class CommentController {
                                 BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/commentForm";
+            return "/comment/commentForm";
 
         } else {
             commentService.save(comment);
@@ -61,14 +61,14 @@ public class CommentController {
 
                 model.addAttribute("comment", comment);
 
-                return "/commentForm";
+                return "/comment/commentForm";
 
             } else {
-                return "/error";
+                return "/error/error";
             }
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 

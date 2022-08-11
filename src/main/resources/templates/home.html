@@ -18,7 +18,7 @@
 <style>
     #b{
         background: url("static/img/blog.png");
-        min-height: 100px;
+        min-height: 50px;
         width: 100%;
     }
 </style>
@@ -34,7 +34,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog entries-->
-        <div class="col-lg-8">
+        <div class="column" style="width: 80%;right: 0; float: left">
             <!-- Featured blog post-->
             <div class="card mb-4">
                 <div class="card-body">
@@ -48,7 +48,7 @@
             <div th:replace="/fragments/pagination :: pagination"/>
         </div>
         <!-- Side widgets-->
-        <div style="position: fixed;right: 25px" class="col-lg-4">
+        <div class="column" style="position: fixed;width: 20%;right: 10px;float: right">
             <!-- Search widget-->
             <div class="card mb-4">
                 <div class="card-header">Search</div>

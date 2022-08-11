@@ -14,7 +14,7 @@
 <div th:replace="/fragments/header :: header"/>
 <style>
     #b{
-        background: url("static/img/blog.png");
+        background: url("../../static/img/blog.png");
         min-height: 100px;
         width: 100%;
     }
@@ -30,7 +30,7 @@
 
         <!--New Post Form-->
         <div class="row" style="margin-top:20px">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <div class="column" style="width: 90%;right: 25px; float: left">
                 <form autocomplete="off" action="#" th:action="@{/newPost}"
                       th:object="${post}" method="post" class="form-horizontal"
                       role="form">
@@ -38,6 +38,7 @@
                     <h2 class="text-center">Write new post</h2>
 
                     <div class="form-group">
+                        <div th:text="'Title'"></div>
                         <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
                                class="alert alert-danger"></label>
                         <input type="text" th:field="*{title}" placeholder="Title"
@@ -45,6 +46,8 @@
                     </div>
 
                     <div class="form-group">
+                        <div th:text="'Body'"></div>
+
                         <label th:if="${#fields.hasErrors('body')}" th:errors="*{body}"
                                class="alert alert-danger"></label>
                         <textarea id="body" th:field="*{body}" placeholder="Body"
@@ -52,18 +55,23 @@
                     </div>
 
                     <div class="form-group">
+                        <div th:text="'Description'"></div>
+
                         <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
                                class="alert alert-danger"></label>
-                        <textarea id="des" th:field="*{description}" placeholder="Description"
-                                  class="form-control input-lg"/>
+                        <textarea id="des" th:field="*{description}" placeholder="Description"/>
                     </div>
 
-                    <div>
+                    <div class="form-group">
+                        <div th:text="'Category'"></div>
+
                         <select th:field="*{category.id}">
                             <option th:each="category : ${categories}" th:value ="${category.id}" th:text="${category.categoryName}"></option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <div th:text="'Tag'"></div>
+
                         <label th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"
                                class="alert alert-danger"></label>
                         <textarea id="t" th:field="*{tag}" placeholder="Tag"

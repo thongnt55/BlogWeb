@@ -44,10 +44,10 @@ public class BlogController {
             model.addAttribute("pager", pager);
             model.addAttribute("user", user);
 
-            return "/posts";
+            return "/post/posts";
 
         } else {
-            return "/error";
+            return "/error/error";
         }
     }
 //

@@ -15,20 +15,24 @@
 
             <span th:if="${pager.hasPrevious()}">
                 <a class="pageLink"
-                   th:href="@{${baseUrl}(page=1)}">&laquo; first</a>
+                   th:href="@{${baseUrl}(page=1)}">&laquo;&laquo;</a>
                 <a class="pageLink"
-                   th:href="@{${baseUrl}(page=${pager.getPageIndex() - 1})}"> previous</a>
+                   th:href="@{${baseUrl}(page=${pager.getPageIndex() - 1})}">&nbsp;&laquo;</a>
             </span>
 
             <span th:if="${pager.getTotalPages() != 1}"
                   th:text="'Page ' + ${pager.getPageIndex()} + ' of ' + ${pager.getTotalPages()} + '.'">
             </span>
 
+            <span th>
+                <a class="pageLink"
+                >index</a>
+            </span>
             <span th:if="${pager.hasNext()}">
                 <a class="pageLink"
-                   th:href="@{${baseUrl}(page=${pager.getPageIndex() + 1})}">next</a>
+                   th:href="@{${baseUrl}(page=${pager.getPageIndex() + 1})}">&raquo;&nbsp;</a>
                 <a class="pageLink"
-                   th:href="@{${baseUrl}(page=${pager.getTotalPages()})}">last &raquo;</a>
+                   th:href="@{${baseUrl}(page=${pager.getTotalPages()})}">&raquo;&raquo;</a>
             </span>
         </span>
     </div>
