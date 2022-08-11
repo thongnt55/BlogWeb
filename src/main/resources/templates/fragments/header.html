@@ -52,6 +52,9 @@
 					<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 						<li class="active"><a th:href="@{/logout}">Sign Out</a></li>
 					</ul>
+					<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+						<li class="active"><a th:href="@{/edit}">Edit profile</a></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
