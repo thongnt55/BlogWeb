@@ -14,4 +14,9 @@ public interface UserService {
 
     User save(User user);
     int updateUser(Long id, String name , String lastname ,String email);
+
+    User findByMail(String email);
+    void updateResetPasswordToken(String token, String email);
+    User get(String resetPasswordToken);
+    void updatePassword(User user, String newPassword);
 }

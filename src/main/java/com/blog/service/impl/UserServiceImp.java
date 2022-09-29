@@ -56,4 +56,28 @@ public class UserServiceImp implements UserService {
         return userRepository.updateUser(name,lastname,email,id);
     }
 
+    @Override
+    public User findByMail(String email) {
+        return userRepository.findByMail(email);
+    }
+    public void updateResetPasswordToken(String token, String email){
+        User user=userRepository.findByMail(email);
+        if(user!=null){
+            System.out.println(user.getEmail());
+            user.setReset_token(token);
+            userRepository.saveAndFlush(user);
+        }
+    }
+
+    @Override
+    public User get(String resetPasswordToken) {
+        return userRepository.findByReset_token(resetPasswordToken);
+    }
+
+    @Override
+    public void updatePassword(User user, String newPassword) {
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setReset_token(null);
+        userRepository.save(user);
+    }
 }

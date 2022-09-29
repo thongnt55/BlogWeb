@@ -22,4 +22,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value ="update user  u set u.name=:name , u.LAST_NAME=:lastname , u.email=:email where u.USER_ID =:id ",nativeQuery = true )
     int updateUser(@Param("name")String name, @Param("lastname")String lastname , @Param("email") String email,@Param("id") Long id);
 
+
+    @Query(value = "SELECT * FROM USER where EMAIL =?", nativeQuery = true)
+    User findByMail(String email);
+
+    @Query(value = "SELECT * FROM USER where RESET_TOKEN =?", nativeQuery = true)
+    User findByReset_token(String token);
 }

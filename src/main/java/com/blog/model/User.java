@@ -47,6 +47,17 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    @Column(name = "reset_token")
+    private String reset_token;
+
+    public String getReset_token() {
+        return reset_token;
+    }
+
+    public void setReset_token(String reset_token) {
+        this.reset_token = reset_token;
+    }
+
     public Collection<Like> getLikes() {
         return likes;
     }

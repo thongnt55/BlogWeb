@@ -117,7 +117,13 @@
                     </div>
                 </fieldset>
             </form>
+
+            <div style=" float: right">
+                <a th:href="@{/forgot_password}">Forgot your password?</a>
+            </div>
+
             <div>&nbsp;</div>
+            <h4>Continue with:</h4>
             <div>
                 <a class="loginBtn loginBtn--google"
                    th:href="@{/oauth2/authorization/google}">
@@ -131,6 +137,7 @@
                     Facebook
                 </a>
             </div>
+
         </div>
     </div>
 
