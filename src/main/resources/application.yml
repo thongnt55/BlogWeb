@@ -28,6 +28,18 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    password: tumyagsvunaexmbg
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: nguyentuanthongdacso@gmail.com
+
   queries:
     roles-query: select u.username, r.role from user u inner join user_role ur on(u.user_id=ur.user_id)
       inner join role r on(ur.role_id=r.role_id) where u.username=?

@@ -42,12 +42,15 @@ public class UserServiceImp implements UserService {
         return userRepository.findByEmail(email);
     }
 
+
+
     @Override
     public User save(User user) {
         // Encode plaintext password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(1);
         // Set Role to ROLE_USER
+        user.setReset_token(null);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
         return userRepository.saveAndFlush(user);
     }
@@ -68,7 +71,6 @@ public class UserServiceImp implements UserService {
             userRepository.saveAndFlush(user);
         }
     }
-
     @Override
     public User get(String resetPasswordToken) {
         return userRepository.findByReset_token(resetPasswordToken);
@@ -76,8 +78,10 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void updatePassword(User user, String newPassword) {
+        System.out.println("run to here");
         user.setPassword(passwordEncoder.encode(newPassword));
         user.setReset_token(null);
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
+        System.out.println("da doi mk");
     }
 }

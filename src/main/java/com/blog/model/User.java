@@ -47,7 +47,7 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    @Column(name = "reset_token")
+    @Column(name = "reset_token",nullable = true)
     private String reset_token;
 
     public String getReset_token() {
@@ -143,4 +143,6 @@ public class User {
     public void setPosts(Collection<Post> posts) {
         this.posts = posts;
     }
+
+
 }
