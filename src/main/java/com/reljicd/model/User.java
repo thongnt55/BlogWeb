@@ -1,7 +1,6 @@
 package com.reljicd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -13,14 +12,9 @@ import java.util.Collection;
 public class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
-
-    @Column(name = "email", unique = true, nullable = false)
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
-    private String email;
 
     @Column(name = "password", nullable = false)
     @Length(min = 5, message = "*Your password must have at least 5 characters")
@@ -37,21 +31,12 @@ public class User {
     @NotEmpty(message = "*Please provide your name")
     private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
 
     @Column(name = "active", nullable = false)
     private int active;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
-
     @OneToMany(mappedBy = "user")
-    private Collection<Post> posts;
-
-    @OneToMany(mappedBy = "user")
-    private Collection<Like> likes;
+    private Collection<Phieuthue> phieuthues;
 
     public Long getId() {
         return id;
@@ -85,22 +70,6 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getActive() {
         return active;
     }
@@ -109,19 +78,11 @@ public class User {
         this.active = active;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
+    public Collection<Phieuthue> getPhieuthues() {
+        return phieuthues;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Collection<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Collection<Post> posts) {
-        this.posts = posts;
+    public void setPhieuthues(Collection<Phieuthue> phieuthues) {
+        this.phieuthues = phieuthues;
     }
 }
