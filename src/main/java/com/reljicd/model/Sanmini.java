@@ -1,9 +1,8 @@
 package com.reljicd.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "sanmini")
@@ -14,11 +13,8 @@ public class Sanmini {
     @Column(name = "sanmini_id")
     private Long id;
 
-
     @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
     private String name;
-
 
     @ManyToOne
     @JoinColumn(name = "loaisan_id", referencedColumnName = "loaisan_id", nullable = false)

@@ -1,8 +1,6 @@
 package com.reljicd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -17,18 +15,13 @@ public class User {
     private Long id;
 
     @Column(name = "password", nullable = false)
-    @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
     @JsonIgnore
     private String password;
 
     @Column(name = "username", nullable = false, unique = true)
-    @Length(min = 5, message = "*Your username must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your username")
     private String username;
 
     @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
     private String name;
 
 

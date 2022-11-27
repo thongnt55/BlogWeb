@@ -1,7 +1,8 @@
 package com.reljicd.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity

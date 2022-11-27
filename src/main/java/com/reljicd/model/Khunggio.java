@@ -9,7 +9,7 @@ public class Khunggio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "khunggio_id")
     private Long id;
 
 

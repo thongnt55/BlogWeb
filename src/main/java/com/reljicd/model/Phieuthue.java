@@ -1,7 +1,8 @@
 package com.reljicd.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "phieuthue")
@@ -12,14 +13,10 @@ public class Phieuthue {
     @Column(name = "phieuthue_id")
     private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "maphieuthue")
-    private Long maphieuthue;
 
-    @Column(name = "name")
+    @Column(name = "ten")
     @NotNull
-    private String name;
+    private String ten;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
@@ -32,7 +29,7 @@ public class Phieuthue {
     private Chusan chusan;
 
     @ManyToOne
-    @JoinColumn(name = "chusan_id", referencedColumnName = "chusan_id", nullable = false)
+    @JoinColumn(name = "khachhang_id", referencedColumnName = "khachhang_id", nullable = false)
     @NotNull
     private Khachhang khachhang;
 
@@ -77,20 +74,12 @@ public class Phieuthue {
         this.id = id;
     }
 
-    public Long getMaphieuthue() {
-        return maphieuthue;
+    public String getTen() {
+        return ten;
     }
 
-    public void setMaphieuthue(Long maphieuthue) {
-        this.maphieuthue = maphieuthue;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public User getUser() {

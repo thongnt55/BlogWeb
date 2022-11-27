@@ -1,7 +1,5 @@
 package com.reljicd.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -16,11 +14,9 @@ public class Chusan {
 
 
     @Column(name = "ten")
-    @NotEmpty(message = "*Please provide your name")
     private String ten;
 
     @Column(name = "diachi")
-    @NotEmpty(message = "*Please provide your name")
     private String diachi;
 
     @OneToMany(mappedBy = "chusan")
