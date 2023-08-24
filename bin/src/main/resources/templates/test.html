@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+</head>
+<body>
+
+<div class="pagination">
+    <a class="pageLink"
+       th:href="@{${baseUrl}(page=1)}">&laquo;&laquo;</a>
+    <a th:href="@{${baseUrl}(page=${pager.getPageIndex() - 1})}">&laquo;</a>
+    <span th:if="${pager.getTotalPages() != 1}"
+          th:text="'Page ' + ${pager.getPageIndex()} + ' of ' + ${pager.getTotalPages()} + '.'">
+            </span>
+
+    <a th:href="@{${baseUrl}(page=${pager.getPageIndex() + 1})}">&raquo;</a>
+    <a class="pageLink"
+       th:href="@{${baseUrl}(page=${pager.getTotalPages()})}"> &raquo;&raquo;</a>
+</div>
+
+</body>
+</html>
